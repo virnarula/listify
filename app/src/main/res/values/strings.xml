@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Listify</string>
     <string name="title_activity_main_tabbed">MainTabbedActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="my_day">My Day</string>
+    <string name="assignments">Assignments</string>
+    <string name="history">History</string>
 </resources>
