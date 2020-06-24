@@ -26,9 +26,9 @@ public class MainTabbedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tabbed);
-        CustomPagerAdapter adapter = new CustomPagerAdapter(this);
+        CustomPagerAdapter adapter = new CustomPagerAdapter(this );
         ViewPager viewPager = findViewById(R.id.view_pager2);
-        viewPager.setAdapter( adapter);
+        viewPager.setAdapter(adapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
