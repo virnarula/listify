@@ -6,12 +6,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.virnarula.listify.model.Assignment;
+import com.virnarula.listify.model.Task;
 import com.virnarula.listify.ui.CustomPagerAdapter;
 import com.virnarula.listify.ui.ModelObject;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -39,7 +41,11 @@ public class MainTabbedActivity extends AppCompatActivity {
 
         readFromFile();
 
-        final CustomPagerAdapter adapter = new CustomPagerAdapter(this, null, null, null );
+        myDay = createSampleData(null);
+        assignments = createSampleData(null);
+        history = createSampleData(null);
+
+        final CustomPagerAdapter adapter = new CustomPagerAdapter(this, myDay, assignments, history );
         final ViewPager viewPager = findViewById(R.id.view_pager2);
         viewPager.setAdapter(adapter);
         TabLayout tabs = findViewById(R.id.tabs);
@@ -56,6 +62,9 @@ public class MainTabbedActivity extends AppCompatActivity {
         });
 
         writeToFile();
+        createSampleData(myDay);
+        createSampleData(assignments);
+        createSampleData(history);
     }
     protected void readFromFile() {
         Log.i("IO", "Reading from file");
@@ -64,5 +73,18 @@ public class MainTabbedActivity extends AppCompatActivity {
 
     protected void writeToFile() {
         Log.i("IO", "Writing to file");
+    }
+
+    private ArrayList<Assignment> createSampleData(ArrayList<Assignment> list) {
+        list = new ArrayList<Assignment>();
+        for(int i = 0; i < 3; i++) {
+            Assignment assignment = new Assignment("Assignment " + i);
+            for (int j = 0; j < 3; j++) {
+                Task task = new Task("Task " + j);
+                assignment.addTask(task);
+            }
+            list.add(assignment);
+        }
+        return list;
     }
 }

@@ -22,6 +22,10 @@ public class Assignment {
         return tasks;
     }
 
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
     public void setTasks(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
