@@ -1,6 +1,7 @@
 package com.virnarula.listify;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.virnarula.listify.model.Status;
@@ -25,6 +27,7 @@ public class createAssignment extends AppCompatActivity {
     private EditText title;
     private Spinner prioritySpinner, statusSpinner;
     private ArrayAdapter<Priority> priorities;
+    private ConstraintLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class createAssignment extends AppCompatActivity {
         title = findViewById(R.id.taskTitle);
         prioritySpinner = findViewById(R.id.priority_spinner);
         statusSpinner = findViewById(R.id.status_spinner);
+        layout = findViewById(R.id.create_assignment_layout);
     }
 
     protected void setListeners() {
@@ -57,7 +61,7 @@ public class createAssignment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Click", "Create Task");
-                Snackbar.make(v, R.string.app_name, Snackbar.LENGTH_SHORT).show();
+
                 createTask();
             }
         });
@@ -79,6 +83,11 @@ public class createAssignment extends AppCompatActivity {
     }
 
     private void createTask() {
+        String taskName = title.getText().toString();
+        if (taskName.isEmpty()) {
+            Snackbar.make(layout, "You haven't given your task a name!", Snackbar.LENGTH_SHORT).show();
+            return;
+        }
         Task task = new Task(String.valueOf(title.getText()));
         task.setPriority((Priority) prioritySpinner.getSelectedItem());
         task.setStatus((Status) statusSpinner.getSelectedItem());

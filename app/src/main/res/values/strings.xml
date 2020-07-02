@@ -4,4 +4,6 @@
     <string name="my_day">My Day</string>
     <string name="assignments">Assignments</string>
     <string name="history">History</string>
+
+    <string name="default_assignment_name">Assignment Name</string>
 </resources>

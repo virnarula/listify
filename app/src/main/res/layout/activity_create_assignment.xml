@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_assignment_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".createAssignment">
@@ -10,15 +11,15 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/card_margin"
-        android:elevation="@dimen/card_elevation"
         android:layout_margin="@dimen/card_margin"
         android:backgroundTint="@color/colorAccent"
+        android:elevation="@dimen/card_elevation"
+        android:padding="@dimen/card_margin"
+        app:cardCornerRadius="@dimen/card_corner_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="@dimen/card_corner_radius">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,12 +30,12 @@
                 android:id="@+id/taskTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:scrollHorizontally="false"
-                android:hint="Assignment Name"
+                android:layout_marginHorizontal="30dp"
                 android:gravity="center"
+                android:hint="Assignment Name"
+                android:imeOptions="actionDone"
                 android:paddingVertical="10dp"
-                android:layout_marginHorizontal="30dp"/>
+                android:scrollHorizontally="false" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,16 +48,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Priority"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Priority" />
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Status"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:text="Status" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,15 +70,15 @@
                     android:id="@+id/priority_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="50dp"/>
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1" />
 
                 <Spinner
                     android:id="@+id/status_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="50dp"/>
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <TextView
@@ -104,8 +105,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Discard Task"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Discard Task" />
 
                 <TextView
                     android:id="@+id/create_task"
@@ -118,7 +119,6 @@
 
 
         </LinearLayout>
-
 
 
     </androidx.cardview.widget.CardView>

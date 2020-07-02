@@ -8,24 +8,24 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.virnarula.listify.R;
 import com.virnarula.listify.model.Assignment;
-
-import org.w3c.dom.Text;
+import com.virnarula.listify.model.Task;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
+import java.util.List;
 
 public class CustomPagerAdapter extends PagerAdapter {
 
     private Context mContext;
-    ArrayList<Assignment> myDay;
-    ArrayList<Assignment> assignments;
-    ArrayList<Assignment> history;
+    List<Task> myDay;
+    List<Task> assignments;
+    List<Task> history;
 
-    public CustomPagerAdapter(Context context, ArrayList<Assignment> myDay, ArrayList<Assignment> assignments, ArrayList<Assignment> history) {
+    public CustomPagerAdapter(Context context, List<Task> myDay, List<Task> assignments, List<Task> history) {
         mContext = context;
         this.myDay = myDay;
         this.assignments = assignments;
@@ -55,30 +55,37 @@ public class CustomPagerAdapter extends PagerAdapter {
     }
 
     public void instantiateMyDay(ViewGroup layout) {
-        TextView temp = layout.findViewById(R.id.myDayTextView);
+        TextView textView = layout.findViewById(R.id.myDayTextView);
         if(myDay == null || myDay.size() == 0) {
-            temp.setText("There are no assignments for my day so far");
+            textView.setText("There are no tasks for my day so far");
         } else {
-            temp.setText("There are " + myDay.size() + " assignments so far");
+            textView.setText("There are " + myDay.size() + " tasks so far");
         }
+
+        RecyclerView recyclerView = layout.findViewById(R.id.my_day_recycler);
+        recyclerView.setVisibility(View.INVISIBLE);
     }
 
     public void instantiateAssignments(ViewGroup layout) {
         TextView temp = layout.findViewById(R.id.assignmentTextView);
         if (assignments == null || assignments.size() == 0) {
-            temp.setText("There are no assignments for so far");
+            temp.setText("There are no tasks for so far");
         } else {
-            temp.setText("There are " + assignments.size() + " assignments so far");
+            temp.setText("There are " + assignments.size() + " tasks so far");
         }
     }
 
     public void instantiateHistory(ViewGroup layout) {
         TextView temp = layout.findViewById(R.id.historyTextView);
         if (history == null || history.size() == 0) {
-            temp.setText("There are no assignments so far");
+            temp.setText("There are no tasks so far");
         } else {
-            temp.setText("There are " + history.size() + " assignments so far");
+            temp.setText("There are " + history.size() + " tasks so far");
         }
+    }
+
+    private void generateAssignmentCards(List<Assignment> assignmentList) {
+
     }
 
     @Override
