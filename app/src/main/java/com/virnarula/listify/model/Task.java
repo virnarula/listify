@@ -1,6 +1,8 @@
 package com.virnarula.listify.model;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable {
     private long startTime, endTime;
     private Status status;
     private Priority priority;
@@ -8,8 +10,8 @@ public class Task {
 
     public Task(String name) {
         this.name = name;
-        priority = Priority.MEDIUM;
-        status = Status.NOT_STARTED;
+        priority = Priority.Medium;
+        status = Status.Planned;
         startTime = -1;
         endTime = -1;
     }
@@ -55,14 +57,3 @@ public class Task {
     }
 }
 
-enum Priority {
-    LOW,
-    MEDIUM,
-    HIGH
-}
-
-enum Status {
-    NOT_STARTED,
-    CURRENT,
-    COMPLETE
-}

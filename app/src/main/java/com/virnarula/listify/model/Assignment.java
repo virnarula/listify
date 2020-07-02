@@ -12,8 +12,8 @@ public class Assignment {
     public Assignment(String name) {
         tasks = new ArrayList<Task>();
         this.name = name;
-        priority = Priority.MEDIUM;
-        status = Status.NOT_STARTED;
+        priority = Priority.Medium;
+        status = Status.Planned;
         startTime = -1;
         endTime = -1;
     }
